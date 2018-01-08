@@ -239,7 +239,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/08/reg/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/09/reg/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="itsenlin">
@@ -258,7 +258,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/08/reg/" itemprop="url">正则表达式入门</a></h1>
+                <a class="post-title-link" href="/2018/01/09/reg/" itemprop="url">正则表达式入门</a></h1>
         
 
         <div class="post-meta">
@@ -270,8 +270,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-08T00:28:24+08:00">
-                2018-01-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-09T00:24:43+08:00">
+                2018-01-09
               </time>
             
 
@@ -343,7 +343,10 @@
 <li>同一个正则表达式有可能匹配多个结果</li>
 <li>大小写敏感</li>
 </ul>
-<h1 id="单字符匹配"><a href="#单字符匹配" class="headerlink" title="单字符匹配"></a>单字符匹配</h1><table>
+<h1 id="单字符匹配"><a href="#单字符匹配" class="headerlink" title="单字符匹配"></a>单字符匹配</h1><ul>
+<li>普通元字符</li>
+</ul>
+<table>
 <thead>
 <tr>
 <th>元字符</th>
@@ -385,7 +388,9 @@
 </tr>
 </tbody>
 </table>
-<p>下面一些与\搭配的字母或者数字，一起可以称为元字符，也可以称为字符简写形式</p>
+<ul>
+<li>下面一些与\搭配的字母或者数字，一起可以称为元字符，也可以称为字符简写形式</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -403,7 +408,7 @@
 </tr>
 <tr>
 <td>[\b]</td>
-<td>退格字符</td>
+<td>退格字符(回退并删除)</td>
 <td></td>
 <td>需要放在中括号中</td>
 </tr>
@@ -433,11 +438,13 @@
 <td>\w</td>
 <td>单词字符</td>
 <td></td>
+<td>同[a-zA-Z0-9_]</td>
 </tr>
 <tr>
 <td>\W</td>
 <td>非单词字符</td>
 <td></td>
+<td>同[^a-zA-Z0-9_]</td>
 </tr>
 <tr>
 <td>\0</td>
@@ -473,16 +480,19 @@
 <td>\s</td>
 <td>空白字符</td>
 <td></td>
+<td>同[\f\n\r\t\v]</td>
 </tr>
 <tr>
 <td>\S</td>
 <td>非空白字符</td>
 <td></td>
+<td>同[^\f\n\r\t\v]</td>
 </tr>
 <tr>
 <td>\t</td>
 <td>水平制表符</td>
 <td></td>
+<td>即Tab键</td>
 </tr>
 <tr>
 <td>\v</td>
@@ -507,6 +517,116 @@
 <tr>
 <td>\H</td>
 <td>非水平空白符</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>POSIX字符类</li>
+</ul>
+<blockquote>
+<p>说明：并不是所有的语言或者工具都支持POSIX字符类<br>在类unix环境的bash脚本中使用，还是比较一目了然<br>使用时必须以[[开头，]]结尾，如[[:alpha:]]</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>字符类</th>
+<th>含义</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[:alnum:]</td>
+<td>任何一个字母或者数字</td>
+<td>同[a-zA-Z0-9]</td>
+</tr>
+<tr>
+<td>[:alpha:]</td>
+<td>任何一个字母</td>
+<td>同[a-zA-Z]</td>
+</tr>
+<tr>
+<td>[:lower:]</td>
+<td>任何一个小写字母</td>
+<td>同 [a-z]</td>
+</tr>
+<tr>
+<td>[:upper:]</td>
+<td>任何一个大写字母</td>
+<td>同 [A-Z]</td>
+</tr>
+<tr>
+<td>[:blank:]</td>
+<td>空格或者制表符</td>
+<td>同[ \t]</td>
+</tr>
+<tr>
+<td>[:space:]</td>
+<td>任何一个空白字符，包括空格</td>
+<td>同[ \t\f\n\r\v]</td>
+</tr>
+<tr>
+<td>[:cntrl:]</td>
+<td>ASCII控制字符</td>
+<td>ASCII 0到31,再加上127</td>
+</tr>
+<tr>
+<td>[:digit:]</td>
+<td>任何一个数字</td>
+<td>同[0-9]或者\d</td>
+</tr>
+<tr>
+<td>[:xdigit:]</td>
+<td>任何一个十六进制数字</td>
+<td>同[a-fA-F0-9]</td>
+</tr>
+<tr>
+<td>[:graph:]</td>
+<td>不包含空格的可打印字符</td>
+<td>同[:print:]</td>
+</tr>
+<tr>
+<td>[:print:]</td>
+<td>可打印字符</td>
+</tr>
+</tbody>
+</table>
+<h1 id="多字符匹配"><a href="#多字符匹配" class="headerlink" title="多字符匹配"></a>多字符匹配</h1><blockquote>
+<p>将元字符放在需要匹配的字符后面，表示此字符重复匹配多少次</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>含义</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>匹配一个或者多个</td>
+<td></td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配0个或者多个</td>
+<td></td>
+</tr>
+<tr>
+<td>?</td>
+<td>匹配0个或者1个</td>
+<td></td>
+</tr>
+<tr>
+<td>{m}</td>
+<td>精确匹配m个</td>
+<td></td>
+</tr>
+<tr>
+<td>{m,n}</td>
+<td>至少匹配m个，至多匹配n个</td>
+<td>其中m,n可以只配置一个值</td>
 </tr>
 </tbody>
 </table>
